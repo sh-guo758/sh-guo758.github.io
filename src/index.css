@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #12100c;
+  --bg-soft: #1a1712;
+  --bg-deep: #0c0a08;
+  --line: rgba(255, 255, 255, 0.08);
+  --ink: #f2ede4;
+  --ink-dim: #a69e92;
+  --ink-faint: #6e665c;
+  --accent: #e8a33d;
+  --accent-soft: rgba(232, 163, 61, 0.16);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg-deep);
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: #3a352d;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #524a3e;
+}
+
+/* 顶部光晕背景 */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 70% 8%, var(--accent-soft), transparent 70%),
+    radial-gradient(45% 45% at 15% 20%, rgba(255, 255, 255, 0.05), transparent 70%);
+}
+
+/* 噪点纹理 */
+.noise::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* 描边卡片 */
+.card-line {
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+/* 灯光光标光晕跟随（可选增强） */
+.light-cursor {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(232, 163, 61, 0.06), transparent 60%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}

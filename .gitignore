@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vite/
+.web_builder/
+*.local
+.DS_Store
+npm-debug.log*
+
+*.tsbuildinfo
